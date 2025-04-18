@@ -42,6 +42,20 @@
             background-color: white;
             border: 1px solid black;
         }
+        .some-flex-container {
+            display: flex;
+            margin-top: 20px;
+            flex-direction: row;
+            background-color: plum;
+            padding: 16px;
+            justify-content: center;
+        }
+        .memory-block {
+            border: 4px solid black;
+            margin: 8px;
+            width: auto;
+            padding: 4px;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +72,12 @@
     </div>
     <div class="some-more-text">
         <p>Well, here's some text to understand what is happening with boxes and spans. First <span class="something-inbetween">this is a span of garbage. </span> Next, it's about whether we <button class="highlight-button">highlight this or not.</button></p>
+    </div>
+
+    <div class="some-flex-container">
+        <div class="memory-block">HBM</div>
+        <div class="memory-block">Cache</div>
+        <div class="memory-block">Shared Memory</div>
     </div>
 </body>
 </html>
