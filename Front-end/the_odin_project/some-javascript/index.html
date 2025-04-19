@@ -29,6 +29,19 @@
         console.log(c);
         console.log(d);
         console.log(e);
+        function showMessage(name) {
+            let message = "Hello, " + name + "!";
+            alert("Hello, World! " + message);
+        }
+        showMessage('Edward');
+
+        function capitalize(str) {
+            if (typeof str !== 'string') {
+                return '';
+            }
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+        console.log(capitalize("lewis eddie"));
     </script>
 </body>
 </html>
