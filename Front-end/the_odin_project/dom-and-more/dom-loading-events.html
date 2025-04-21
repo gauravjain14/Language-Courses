@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Page Load Events</title>
+</head>
+
+<body>
+    <input type="text" id="message" placeholder="Type a message here...">
+    <script>
+        addEventListener('DOMContentLoaded', (event) => {
+            console.log('The DOM is fully loaded.');
+        });
+
+        addEventListener('load', (event) => {
+            console.log('The page is fully loaded.');
+        });
+
+        addEventListener('beforeunload', (event) => {
+            // show the confirmation dialog
+            event.preventDefault();
+            // Google Chrome requires returnValue to be set.
+            event.returnValue = '';
+        });
+
+        addEventListener('unload', (event) => {
+            // send analytic data
+            console.log('The page is unloaded.');   
+        });
+
+        let textBox = document.getElementById('message');
+        textBox.addEventListener('keydown', (event) => {
+            console.log(`Key pressed: ${event.key}`);
+        });
+        textBox.addEventListener('keyup', (event) => {
+            console.log(`Key released: ${event.key}`);
+        });
+        textBox.addEventListener('keypress', (event) => {
+            console.log(`Key pressed: ${event.key}`);
+        });
+        textBox.addEventListener('input', (event) => {
+            console.log(`Input changed: ${event.target.value}`);
+        });
+    </script>
+</body>
+</html>
