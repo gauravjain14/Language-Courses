@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <p>Here we will add a link to the <a target="_blank" href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+
+      <script>
+        const link = document.querySelector('a');
+        link.textContent = 'Open Source Software for the win!';
+        link.href = 'https://huggingface.co'
+        const sect = document.querySelector('section');
+        const para = document.createElement('p');
+        
+        para.style.color = "white";
+        para.style.backgroundColor = "black";
+        para.style.padding = "10px";
+        para.style.width = "250px";
+        para.style.textAlign = "center";
+
+        para.textContent = 'This is a new paragraph added to the section.';
+        sect.appendChild(para);
+        const text = document.createTextNode(' This is a text node added to the section.');
+        const linkPara = document.querySelector('p');
+        linkPara.appendChild(text);
+    </script>
+  </body>
+</html>
