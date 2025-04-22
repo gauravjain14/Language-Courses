@@ -2,6 +2,17 @@
 <html>
 <head>
     <title>JS Page Load Events</title>
+    <style>
+        .dropdown-content {
+            display: none;
+            padding: 10px;
+            background-color: rgb(231, 231, 231);
+            border: 1px solid #ccc;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -11,13 +22,102 @@
         <li><a id="dashboard">Dashboard</a></li>
         <li><a id="report">report</a></li>
     </ul>
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#" style="display: block; padding: 10px;">Profile</a>
+            <a href="#" style="display: block; padding: 10px">Settings</a>
+            <a href="#" style="display: block; padding: 10px">Messages</a>
+        </div>
+    </div>
     <script>
         addEventListener('DOMContentLoaded', (event) => {
             console.log('The DOM is fully loaded.');
         });
 
         addEventListener('load', (event) => {
-            console.log('The page is fully loaded.');
+            let textBox = document.getElementById('message');
+            textBox.addEventListener('keydown', (event) => {
+                console.log(`Key pressed: ${event.key}`);
+            });
+            textBox.addEventListener('keyup', (event) => {
+                console.log(`Key released: ${event.key}`);
+            });
+            textBox.addEventListener('keypress', (event) => {
+                console.log(`Key pressed: ${event.key}`);
+            });
+            textBox.addEventListener('input', (event) => {
+                console.log(`Input changed: ${event.target.value}`);
+            });
+
+            let menu = document.querySelector('#menu');
+            /* let home_id = document.querySelector('#home');
+            // To put items one after another, remember to set display to block
+            home_id.style.display = 'block';
+            home_id.style.border = '1px solid black';
+            home_id.style.padding = '10px';
+            home_id.style.marginBottom = '10px';
+            let dashboard_id = document.querySelector('#dashboard');
+            dashboard_id.style.display = 'block';
+            dashboard_id.style.border = '1px solid black';
+            dashboard_id.style.padding = '10px';
+            dashboard_id.style.marginBottom = '10px';
+            let report_id = document.querySelector('#report');
+            report_id.style.display = 'block';
+            report_id.style.border = '1px solid black';
+            report_id.style.padding = '10px';
+            report_id.style.marginBottom = '10px'; */
+
+            let listItems = menu.querySelectorAll('li');
+            listItems.forEach((item) => {
+                item.style.border = '1px solid black'; // Add border to each list item
+                item.style.padding = '10px'; // Add padding to each list item
+                item.style.display = 'block'; // Ensure each item is displayed as a block
+                item.style.marginBottom = '5px'; // Add some space between items
+                item.style.padding = '5px'; // Add padding to each item
+                item.style.cursor = 'pointer'; // Change cursor to pointer for better UX
+                item.addEventListener('mouseover', () => {
+                    item.style.backgroundColor = '#f0f0f0'; // Change background color on hover
+                });
+                item.addEventListener('mouseout', () => {
+                    item.style.backgroundColor = ''; // Reset background color when not hovering
+                });
+            });
+            
+            menu.addEventListener('click', (event) => {
+                let target = event.target;
+                switch(target.id) {
+                    case 'home':
+                        console.log('Home link clicked');
+                        break;
+                    case 'dashboard':
+                        console.log('Dashboard link clicked');
+                        break;
+                    case 'report':
+                        console.log('Report link clicked');
+                        break;
+                    default:
+                        console.log('Unknown link clicked');
+                }
+            });
+
+            const dropdownButton = document.querySelector('.dropbtn');
+            const dropdownContent = document.querySelector('.dropdown-content');
+            // Toggle dropdown visibility on button click
+            dropdownButton.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent immediate closing on click of the button itself
+                dropdownContent.classList.toggle('show');
+            });
+
+            // Close the dropdown when clicking outside the dropdown
+            document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                dropdownContent.classList.remove('show');
+            }
+            });
+
+            // Let's build on dispatchEvent
+            let clickEvent = new Event('click');
         });
 
         addEventListener('beforeunload', (event) => {
@@ -32,70 +132,6 @@
             console.log('The page is unloaded.');   
         });
 
-        let textBox = document.getElementById('message');
-        textBox.addEventListener('keydown', (event) => {
-            console.log(`Key pressed: ${event.key}`);
-        });
-        textBox.addEventListener('keyup', (event) => {
-            console.log(`Key released: ${event.key}`);
-        });
-        textBox.addEventListener('keypress', (event) => {
-            console.log(`Key pressed: ${event.key}`);
-        });
-        textBox.addEventListener('input', (event) => {
-            console.log(`Input changed: ${event.target.value}`);
-        });
-
-        let menu = document.querySelector('#menu');
-        /* let home_id = document.querySelector('#home');
-        // To put items one after another, remember to set display to block
-        home_id.style.display = 'block';
-        home_id.style.border = '1px solid black';
-        home_id.style.padding = '10px';
-        home_id.style.marginBottom = '10px';
-        let dashboard_id = document.querySelector('#dashboard');
-        dashboard_id.style.display = 'block';
-        dashboard_id.style.border = '1px solid black';
-        dashboard_id.style.padding = '10px';
-        dashboard_id.style.marginBottom = '10px';
-        let report_id = document.querySelector('#report');
-        report_id.style.display = 'block';
-        report_id.style.border = '1px solid black';
-        report_id.style.padding = '10px';
-        report_id.style.marginBottom = '10px'; */
-
-        let listItems = menu.querySelectorAll('li');
-        listItems.forEach((item) => {
-            item.style.border = '1px solid black'; // Add border to each list item
-            item.style.padding = '10px'; // Add padding to each list item
-            item.style.display = 'block'; // Ensure each item is displayed as a block
-            item.style.marginBottom = '5px'; // Add some space between items
-            item.style.padding = '5px'; // Add padding to each item
-            item.style.cursor = 'pointer'; // Change cursor to pointer for better UX
-            item.addEventListener('mouseover', () => {
-                item.style.backgroundColor = '#f0f0f0'; // Change background color on hover
-            });
-            item.addEventListener('mouseout', () => {
-                item.style.backgroundColor = ''; // Reset background color when not hovering
-            });
-        });
-        
-        menu.addEventListener('click', (event) => {
-            let target = event.target;
-            switch(target.id) {
-                case 'home':
-                    console.log('Home link clicked');
-                    break;
-                case 'dashboard':
-                    console.log('Dashboard link clicked');
-                    break;
-                case 'report':
-                    console.log('Report link clicked');
-                    break;
-                default:
-                    console.log('Unknown link clicked');
-            }
-        });
     </script>
 </body>
 </html>
