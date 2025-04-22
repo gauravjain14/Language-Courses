@@ -6,6 +6,11 @@
 
 <body>
     <input type="text" id="message" placeholder="Type a message here...">
+    <ul id="menu">
+        <li><a id="home">home</a></li>
+        <li><a id="dashboard">Dashboard</a></li>
+        <li><a id="report">report</a></li>
+    </ul>
     <script>
         addEventListener('DOMContentLoaded', (event) => {
             console.log('The DOM is fully loaded.');
@@ -39,6 +44,57 @@
         });
         textBox.addEventListener('input', (event) => {
             console.log(`Input changed: ${event.target.value}`);
+        });
+
+        let menu = document.querySelector('#menu');
+        /* let home_id = document.querySelector('#home');
+        // To put items one after another, remember to set display to block
+        home_id.style.display = 'block';
+        home_id.style.border = '1px solid black';
+        home_id.style.padding = '10px';
+        home_id.style.marginBottom = '10px';
+        let dashboard_id = document.querySelector('#dashboard');
+        dashboard_id.style.display = 'block';
+        dashboard_id.style.border = '1px solid black';
+        dashboard_id.style.padding = '10px';
+        dashboard_id.style.marginBottom = '10px';
+        let report_id = document.querySelector('#report');
+        report_id.style.display = 'block';
+        report_id.style.border = '1px solid black';
+        report_id.style.padding = '10px';
+        report_id.style.marginBottom = '10px'; */
+
+        let listItems = menu.querySelectorAll('li');
+        listItems.forEach((item) => {
+            item.style.border = '1px solid black'; // Add border to each list item
+            item.style.padding = '10px'; // Add padding to each list item
+            item.style.display = 'block'; // Ensure each item is displayed as a block
+            item.style.marginBottom = '5px'; // Add some space between items
+            item.style.padding = '5px'; // Add padding to each item
+            item.style.cursor = 'pointer'; // Change cursor to pointer for better UX
+            item.addEventListener('mouseover', () => {
+                item.style.backgroundColor = '#f0f0f0'; // Change background color on hover
+            });
+            item.addEventListener('mouseout', () => {
+                item.style.backgroundColor = ''; // Reset background color when not hovering
+            });
+        });
+        
+        menu.addEventListener('click', (event) => {
+            let target = event.target;
+            switch(target.id) {
+                case 'home':
+                    console.log('Home link clicked');
+                    break;
+                case 'dashboard':
+                    console.log('Dashboard link clicked');
+                    break;
+                case 'report':
+                    console.log('Report link clicked');
+                    break;
+                default:
+                    console.log('Unknown link clicked');
+            }
         });
     </script>
 </body>
