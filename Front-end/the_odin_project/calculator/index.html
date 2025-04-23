@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .calculator button {
+            width: calc(25% - 10px);
+            padding: 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .num-button {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <button id="clear">Clear</button>
+
+        <button id="divide">/</button>
+        <button id="multiply">*</button>
+        <button id="subtract">-</button>
+        <button id="add">+</button>
+        <button id="equals">=</button>
+        <button id="decimal">.</button>
+
+        <div class="num-button">
+            <button id="zero">0</button>
+            <button id="one">1</button>
+            <button id="two">2</button>
+            <button id="four">4</button>
+            <button id="five">5</button>
+            <button id="six">6</button>
+            <button id="seven">7</button>
+            <button id="eight">8</button>
+            <button id="nine">9</button>
+        </div>
+    </div>
+</body>
+</html>

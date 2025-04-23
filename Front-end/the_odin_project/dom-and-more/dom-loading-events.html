@@ -84,6 +84,7 @@
                 });
             });
             
+            // Event Delegation. Rather than creating N-event listeners.
             menu.addEventListener('click', (event) => {
                 let target = event.target;
                 switch(target.id) {
