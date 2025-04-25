@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <style>
+        #library {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+        .book {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        #addBook {
+            width: auto;
+            align-self: flex-start;
+        }
+        #booksListHeader {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding-top: 10px;
+            gap: 10px;
+            border-bottom: 1px solid black;
+            font-weight: bold;
+        }
+        #booksListHeader > div {
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        #booksListHeader > div:nth-child(1),
+        #booksListBody .book > div:nth-child(1) { /* Title column */
+            width: 40%;
+        }
+        #booksListHeader > div:nth-child(2),
+        #booksListBody .book > div:nth-child(2) { /* Author column */
+            width: 22.5%;
+        }
+        #booksListHeader > div:nth-child(3),
+        #booksListBody .book > div:nth-child(3) { /* Pages column */
+            width: 12.5%;
+        }
+        #booksListHeader > div:nth-child(4),
+        #booksListBody .book > div:nth-child(4) { /* Read status column */
+            width: 12.5%;
+        }
+
+        /* Style the 5th div (buttons wrapper / empty header) */
+        #booksListHeader > div:nth-child(5),
+        #booksListBody .book > div:nth-child(5) {
+            width: 12.5%;
+            display: flex;
+            gap: 5px;
+            justify-content: flex-start;
+        }
+        #booksListBody {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <title>Library</title>
+</head>
+<body>
+    <div id="library">
+        <form id="bookForm">
+            <div class="book">
+                <input type="text" placeholder="Title">
+                <input type="text" placeholder="Author">
+                <input type="text" placeholder="Pages">
+                <input type="checkbox" placeholder="Read">
+            </div>
+        </form>
+        <button type="button" id="addBook">Add Book</button>
+        <div id="books">
+            <div id="booksList">
+                <div id="booksListHeader">
+                    <div>Title</div>
+                    <div>Author</div>
+                    <div>Pages</div>
+                    <div>Read</div>
+                    <div></div>
+                </div>
+                <div id="booksListBody">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
