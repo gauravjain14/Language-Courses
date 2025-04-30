@@ -14,6 +14,77 @@ function App() {
     window.open('https://www.google.com', '_blank');
   }
 
+  function CustomInput() {
+    const [value, setValue] = useState("");
+    const [error, setError] = useState(null); // State for validation error
+
+    // Validation function
+    const validateInput = (inputValue) => {
+      if (!inputValue) {
+        return "Input cannot be empty."; // Or handle empty state differently
+      }
+      const errors = [];
+      if (!/[A-Z]/.test(inputValue)) {
+        errors.push("one uppercase letter");
+      }
+      if (!/[a-z]/.test(inputValue)) {
+        errors.push("one lowercase letter");
+      }
+      if (!/[0-9]/.test(inputValue)) {
+        errors.push("one number");
+      }
+      // Using a common set of special characters
+      if (!/[!@#$%^&*(),.?":{}|<>]/.test(inputValue)) { 
+        errors.push("one special symbol");
+      }
+
+      if (errors.length > 0) {
+        return `Input must contain at least ${errors.join(', ')}.`;
+      }
+      
+      return null; // No error
+    };
+
+    const handleChange = (event) => {
+      const newValue = event.target.value;
+      setValue(newValue); // Update the value state
+
+      // value is not immediately changed
+      console.log('Can I access value inside ', value);
+      
+      const validationError = validateInput(newValue); 
+      setError(validationError); // Update the error state
+      
+      console.log("Current input:", newValue); // Log the actual current input
+      if (validationError) {
+        console.log("Validation Error:", validationError);
+      } else {
+        console.log("Input is valid.");
+      }
+    };
+
+    return (
+      <div> {/* Wrap input and error message */}
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          style={{ borderColor: error ? 'red' : 'initial' }} 
+        />
+        {error && <p style={{ color: 'red', fontSize: '0.8em' }}>{error}</p>}
+      </div>
+    );
+  }
+
+  function Component() {
+    const [count, setCount] = useState(0);
+  
+    if (count === 0) {
+      setCount(count + 1);
+    }
+  
+    return <h1>{count}</h1>;
+  }  
   
   function Gallery() {
     const [index, setIndex] = useState(0);
@@ -30,6 +101,7 @@ function App() {
     let sculpture = sculptureList[index];
     return (
       <>
+        <CustomInput />
         <button onClick={handleNextClick}>
           Next
         </button>
